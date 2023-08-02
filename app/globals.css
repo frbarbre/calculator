@@ -2,3 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Setting up grid area names */
+
+.grid-0 {
+  grid-area: zero;
+}
+
+.grid-1 {
+  grid-area: one;
+}
+
+.grid-2 {
+  grid-area: two;
+}
+
+.grid-3 {
+  grid-area: three;
+}
+
+.grid-4 {
+  grid-area: four;
+}
+
+.grid-5 {
+  grid-area: five;
+}
+
+.grid-6 {
+  grid-area: six;
+}
+
+.grid-7 {
+  grid-area: seven;
+}
+
+.grid-8 {
+  grid-area: eight;
+}
+
+.grid-9 {
+  grid-area: nine;
+}
+
+.grid-dot {
+  grid-area: dot;
+}
+
+.grid-plus {
+  grid-area: plus;
+}
+
+.grid-minus {
+  grid-area: minus;
+}
+
+.grid-divide {
+  grid-area: divide;
+}
+
+.grid-times {
+  grid-area: times;
+}
+
+.grid-delete {
+  grid-area: delete;
+}
+
+.grid-reset {
+  grid-area: reset;
+}
+
+.grid-equal {
+  grid-area: equal;
+}
+
+.grid-area {
+  display: grid;
+  grid-template-areas: 
+  "seven eight nine delete" 
+  "four five six plus" 
+  "one two three minus" 
+  "dot zero divide times"
+  "reset reset equal equal";
+}

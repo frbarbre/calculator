@@ -1,21 +1,26 @@
 "use client";
 
 import { useThemeStore } from "@/app/store";
+import ThemeSwitcher from "./ThemeSwitcher";
 import { Themes } from "@/types";
 
 export default function Header() {
-  const setTheme = useThemeStore((state) => state.setTheme);
+  const theme = useThemeStore((state) => state.theme);
+
   return (
-    <header className="flex w-full justify-between">
-      <h1>calc</h1>
-      <div className="flex gap-4">
-        <h2>THEME</h2>
-        <div className="flex gap-2">
-          <p onClick={() => setTheme(Themes.dark)}>1</p>
-          <p onClick={() => setTheme(Themes.light)}>2</p>
-          <p onClick={() => setTheme(Themes.neon)}>3</p>
-        </div>
-      </div>
+    <header
+      className={`${
+        theme === Themes.dark
+          ? "text-white"
+          : theme === Themes.light
+          ? "text-light-text"
+          : theme === Themes.neon
+          ? "text-neon-text"
+          : ""
+      } flex w-full items-end justify-between mb-[32px]`}
+    >
+      <h1 className={`font-bold tracking-[-0.533px] text-[32px] h-[38px]`}>calc</h1>
+      <ThemeSwitcher />
     </header>
   );
 }

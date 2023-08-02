@@ -22,7 +22,7 @@ export default function RootLayout({
       <body
         className={`${
           leagueSpartan.className
-        } flex items-center justify-center min-h-screen transition-all ${
+        } flex items-center justify-center min-h-screen transition-all my-[32px] ${
           theme === Themes.dark
             ? "bg-dark text-white"
             : theme === Themes.light

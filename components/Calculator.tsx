@@ -1,13 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { numbers } from "@/data";
 import { Operators } from "@/types";
-import { calculate } from "@/hooks/calculate";
+import { calculate } from "@/utils/calculate";
 import Screen from "./Screen";
+import Buttons from "./Buttons";
 
 export default function Calculator() {
-  const [result, setResult] = useState<null | number>(null);
   const [firstArg, setFirstArg] = useState({
     isActive: true,
     content: "",
@@ -17,6 +16,7 @@ export default function Calculator() {
     content: "",
   });
   const [operator, setOperator] = useState<Operators | "">("");
+  const [result, setResult] = useState<null | number>(null);
 
   function handleNumberClick(number: string) {
     if (firstArg.isActive) {
@@ -89,12 +89,14 @@ export default function Calculator() {
   }
 
   function handleEquals() {
-    if (!result) {
-      calculate(firstArg.content, secondArg.content, operator, setResult);
-    } else {
-      calculate(result, secondArg.content, operator, setResult);
+    if (secondArg.content !== "") {
+      if (!result) {
+        calculate(firstArg.content, secondArg.content, operator, setResult);
+      } else {
+        calculate(result, secondArg.content, operator, setResult);
+      }
+      softReset();
     }
-    softReset();
   }
 
   function handleDelete() {
@@ -119,41 +121,14 @@ export default function Calculator() {
   return (
     <section>
       <Screen result={result} firstArg={firstArg} secondArg={secondArg} />
-      {numbers.map((number) => (
-        <h2 key={number} onClick={() => handleNumberClick(number)}>
-          {number}
-        </h2>
-      ))}
-      <div>
-        <p
-          className={`${operator === Operators.divide ? "text-lime-500" : ""}`}
-          onClick={() => handleOperatorClick(Operators.divide)}
-        >
-          {Operators.divide}
-        </p>
-        <p
-          className={`${operator === Operators.minus ? "text-lime-500" : ""}`}
-          onClick={() => handleOperatorClick(Operators.minus)}
-        >
-          {Operators.minus}
-        </p>
-        <p
-          className={`${operator === Operators.plus ? "text-lime-500" : ""}`}
-          onClick={() => handleOperatorClick(Operators.plus)}
-        >
-          {Operators.plus}
-        </p>
-        <p
-          className={`${operator === Operators.times ? "text-lime-500" : ""}`}
-          onClick={() => handleOperatorClick(Operators.times)}
-        >
-          {Operators.times}
-        </p>
-        <p onClick={handleEquals}>=</p>
-      </div>
-
-      <p onClick={handleReset}>Reset</p>
-      <p onClick={handleDelete}>Delete</p>
+      <Buttons
+        handleDelete={handleDelete}
+        handleEquals={handleEquals}
+        handleNumberClick={handleNumberClick}
+        handleOperatorClick={handleOperatorClick}
+        handleReset={handleReset}
+        operator={operator}
+      />
     </section>
   );
 }
