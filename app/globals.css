@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@media screen and (max-height: 710px) {
-  body {
-    padding: 32px;
-  }
-}
-
 /* Setting up grid area names */
 
 .grid-0 {

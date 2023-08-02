@@ -35,7 +35,7 @@ export default function Button({
   return (
     <div
       className={`grid-${gridArea}
-       h-[60px] min-w-[60px] cursor-pointer relative`}
+       h-[60px] sm:min-w-[60px] cursor-pointer relative`}
       onClick={handleClick}
     >
       <div
