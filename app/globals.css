@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@media screen and (max-height: 710px) {
+  body {
+    padding: 32px;
+  }
+}
+
 /* Setting up grid area names */
 
 .grid-0 {
@@ -78,10 +84,10 @@
 
 .grid-area {
   display: grid;
-  grid-template-areas: 
-  "seven eight nine delete" 
-  "four five six plus" 
-  "one two three minus" 
-  "dot zero divide times"
-  "reset reset equal equal";
+  grid-template-areas:
+    "seven eight nine delete"
+    "four five six plus"
+    "one two three minus"
+    "dot zero divide times"
+    "reset reset equal equal";
 }
